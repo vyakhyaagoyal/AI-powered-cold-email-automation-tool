@@ -1,0 +1,11 @@
+python-dotenv>=1.0.1
+requests>=2.31.0
+beautifulsoup4>=4.12.3
+aiosmtplib>=3.0.1
+rich>=13.7.1
+
+# LLM provider SDKs - only the one matching LLM_PROVIDER in .env is actually used,
+# but all three are listed so you can switch providers without reinstalling.
+openai>=1.30.0
+anthropic>=0.34.0
+google-generativeai>=0.5.4
