@@ -38,7 +38,7 @@ reachops-cold-email/
 ## 2. Setup
 
 ### 2.1 Install dependencies
-
+<!-- .\.venv\Scripts\Activate.ps1 -->
 ```bash
 python3 -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
@@ -126,9 +126,9 @@ Sending email...
 ╭─ Recipient ────────────────╮
 │ contact@aksfacilities.in   │
 ╰────────────────────────────╯
-╭─ Subject ────────────────────────────────────────────╮
+╭─ Subject ─────────────────────────────────────────────╮
 │ Can ReachOps simplify operations at AKS Facilities?   │
-╰────────────────────────────────────────────────────────╯
+╰───────────────────────────────────────────────────────╯
 
 Type 'view 12' to display the full generated email.
 ----------------------------------------
@@ -223,5 +223,6 @@ comfortable reading interleaved output for faster campaigns.
 - `resend` re-sends the exact stored subject/body — it does not re-scrape or
   regenerate. To send a fresh, re-researched email, just run `send` again with
   that company's CSV row.
-#   A I - p o w e r e d - c o l d - e m a i l - a u t o m a t i o n - t o o l  
+#   A I - p o w e r e d - c o l d - e m a i l - a u t o m a t i o n - t o o l 
+ 
  

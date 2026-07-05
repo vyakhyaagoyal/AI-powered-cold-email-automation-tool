@@ -24,7 +24,7 @@ SIGNOFF_NOTE = (
     "End the body right after your final sentence of the message."
 )
 
-EMAIL_PROMPT_TEMPLATE = """You are an experienced B2B sales copywriter writing a cold outreach \
+EMAIL_PROMPT_TEMPLATE = """You are an experienced B2B SaaS founder writing a personalized cold outreach \
 email on behalf of ReachOps, a company that builds WhatsApp automation and operations software \
 for service businesses.
 
@@ -41,27 +41,94 @@ REACHOPS CAPABILITIES (mention ONLY the ones genuinely relevant to this company'
 do not list all of them):
 {capabilities}
 
-WRITING RULES:
-1. The opening paragraph MUST reference something specific and concrete from the website \
-content above (e.g. a service they offer, a phrase describing what they do, their customer \
-type) to prove real research was done. Do not use generic compliments like "I was impressed \
-by your website."
-2. Sound like a real person wrote it — conversational, direct, no corporate fluff, no \
-em-dashes, no phrases like "I hope this email finds you well" or "In today's fast-paced world."
-3. Naturally explain how ReachOps could simplify their operations, choosing only relevant \
-capabilities from the list above.
-4. Keep the total body between 200 and 300 words.
-5. {signoff_note}
-6. If the website content is thin or generic, keep the personalization honest and modest \
-rather than fabricating details.
+WRITING Rules:
+
+1. Mention two specific service, workflow, customer type, or operational detail from their website in the first sentence. Make it obvious the email was researched specifically for them.
+2. Never flatter unnecessarily.
+3. Write like a founder reaching out to another business owner.
+4. Keep the email between 220-280 words. Make it feel substantive and informative rather than brief.
+5. Use up to 3 short paragraphs of prose, plus a short bullet list. Separate paragraphs with a single blank line so the email looks clean and easy to read.
+6. Use bullet points for ReachOps benefits. Never mention more than four bullet points. Use Unicode bullet points (•) for every bullet.
+Choose only the most relevant capabilities.
+7. Mention capabilities that actually fit their business and explain why they matter operationally for this company.
+8. In the body, include a brief but clear explanation of what ReachOps is and how it helps service businesses run customer communication and operations more smoothly. Explicitly mention ReachOps capabilities such as WhatsApp automation, customer reminders, and operational visibility.
+9. Each bullet should mention one ReachOps capability followed by the practical business benefit for that company.
+10. Keep every sentence short, but make the overall message fuller and more useful.
+11. Avoid buzzwords and corporate language.
+12. Make it feel skimmable while still sounding informative and thoughtful.
+13. Finish with one friendly sentence/CTA inviting them for a quick 15-minute demo or introductory call if they think it could be useful.
+14. Do not invent information not present on their website.
+15. Never use phrases like:
+
+"I hope you're doing well"
+
+"I hope this email finds you well"
+
+"I came across your website"
+
+"I was impressed by"
+
+"In today's fast-paced world"
+
+"I believe"
+
+"I wanted to reach out"
+
+"Leverage"
+
+"Seamlessly"
+
+"Revolutionize"
+
+"Transform your business"
+
+"Game changer"
+16. {signoff_note}
+
+Preferred structure:
+
+Paragraph 1
+- Mention something specific from their website.
+- Transition naturally into why you're reaching out.
+
+Paragraph 2
+
+Use a natural transition such as:
+
+"Based on what I saw, ReachOps could help with:"
+
+or
+
+"I think there are a few areas where ReachOps could add value:"
+Present the benefits as a short bullet list with Unicode bullets (•), separated by a single blank line before and after the list if needed.
+
+• ...
+• ...
+• ...
+• ...
+
+Paragraph 3
+
+End with one friendly sentence asking if they'd be open to a quick 15-minute demo or call next week. Keep it conversational and avoid sounding pushy.
 
 OUTPUT FORMAT:
 Return ONLY a raw JSON object (no markdown fences, no commentary, no extra text before or \
-after) with exactly these two keys:
-{{"subject": "<email subject line, under 60 characters, specific to the company, not \
-generic>", "body": "<the email body text as described above>"}}
-"""
+after) with exactly these two keys.
+The response must be valid JSON.
+Use double quotes for keys and string values.
+Do not include literal newline characters inside the body string.
+Use \\n\\n for paragraph breaks inside the body and \\n• for bullet points inside the body.
+Example shape:
+{{"subject": "Short, specific subject line", "body": "First paragraph\\n\\nSecond paragraph\\n\\n• Bullet one\\n• Bullet two"}}
 
+Subject requirements:
+- At least 5 words.
+- Under 70 characters.
+- Specific to the company.
+- Strong and direct.
+- Sound like a real email from a founder.
+- Avoid generic sales phrases.
+"""
 
 def build_prompt(company_name: str, website_url: str, website_content: str) -> str:
     """Construct the final LLM prompt for a given company's research."""
