@@ -22,9 +22,9 @@ def build_signature(config: Config) -> str:
         f"\n\n---\n"
         f"{config.contact_name}\n"
         f"{config.contact_role}\n"
-        f"{config.contact_portfolio}\n"
-        f"{config.contact_email}\n"
-        f"{config.contact_phone}"
+        f"Founder portfolio link: {config.contact_portfolio}\n"
+        f"Email: {config.contact_email}\n"
+        f"Phone: {config.contact_phone}"
     )
 
 
